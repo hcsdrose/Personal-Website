@@ -1,5 +1,5 @@
-const cacheName = 'v1::static';
-
+const version = "0.0.1";
+const cacheName = `christopherrose-${version}`;
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(cache => {
@@ -8,17 +8,22 @@ self.addEventListener('install', e => {
         '/index.html',
         '/css/style.css',
         '/js/jquery-3.5.1.min.js'
-      ]).then(() => self.skipWaiting());
+      ])
+          .then(() => self.skipWaiting());
     })
   );
 });
 
-self.addEventListener('fetch', function(event) {
- console.log(event.request.url);
+self.addEventListener('activate', event => {
+  event.waitUntil(self.clients.claim());
+});
 
- event.respondWith(
-   caches.match(event.request).then(function(response) {
-     return response || fetch(event.request);
-   })
- );
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.open(cacheName)
+      .then(cache => cache.match(event.request, {ignoreSearch: true}))
+      .then(response => {
+      return response || fetch(event.request);
+    })
+  );
 });
