@@ -1,9 +1,23 @@
 {
-  "name": "Christopher Rose",
-  "short_name": "Chris Rose",
+  "short_name": "CR Portfolio",
+  "name": "Christopher Rose Portfolio",
+  "description": "An online portfolio of the work of Christopher Rose",
+  "icons": [
+    {
+      "src": "/img/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
   "start_url": "index.html",
+  "background_color": "#000000",
   "display": "standalone",
-  "background_color": "#000",
-  "theme_color": "#000",
+  "scope": "/",
+  "theme_color": "#3367D6",
   "orientation": "portrait-primary"
 }
