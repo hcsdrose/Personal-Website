@@ -1,8 +1,8 @@
 const cacheName = 'christopherrose-v1';
 const staticAssets = [
-  './',
-  './index.html',
-  './css/styles.css'
+  '/',
+  'index.html',
+  'css/styles.css'
 ];
 
 self.addEventListener('install', async e => {
