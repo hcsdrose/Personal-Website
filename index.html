@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="apple-mobile-web-app-status-bar" content="#000" />
@@ -19,11 +19,7 @@
 
   <script>
     if('serviceWorker' in navigator){
-      try{
-        navigator.serviceWorker.register('js/sw.js');
-      }catch(e){
-        console.log('SW failed');
-      }
+      navigator.serviceWorker.register('sw.js');
     }
   </script>
 
