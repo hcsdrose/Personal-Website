@@ -9,6 +9,8 @@ self.addEventListener('install', e => {
     caches.open(cacheName).then(cache => {
       return cache.addAll([
         '/',
+        '/index.html',
+        '/css/style.css',
         /*
           DEAR READER,
           ADD A LIST OF YOUR ASSETS THAT
