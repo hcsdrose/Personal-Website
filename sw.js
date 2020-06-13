@@ -1,14 +1,14 @@
 //Install PWA
-const cacheName = 'christopherrose-v0.0.4';
+const cacheName = 'christopherrose-0.0.5';
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll([
         './index.html',
-        './css/style.css',
+        './css/style-0.0.5.css',
         './js/jquery-3.5.1.min.js',
         './js/routie-0.3.2.min.js',
-        './js/routes.js',
+        './js/routes-0.0.5.js',
         './pages/home.html',
         './pages/projects.html',
         './pages/hobbies.html',
