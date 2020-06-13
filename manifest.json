@@ -1,5 +1,5 @@
 {
-  "short_name": "CR Portfolio",
+  "short_name": "Chris Rose",
   "name": "Christopher Rose Portfolio",
   "description": "An online portfolio of the work of Christopher Rose",
   "icons": [
@@ -18,6 +18,6 @@
   "background_color": "#000000",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#3367D6",
+  "theme_color": "#000000",
   "orientation": "portrait-primary"
 }
