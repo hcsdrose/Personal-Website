@@ -1,0 +1,59 @@
+body{
+  margin:0;
+  padding:30px;
+  font-family:'Rubik',sans-serif;
+  font-size:16px;
+}
+
+p{
+  line-height:1.5em;
+}
+
+a{
+  font-weight:500;
+  color:#000;
+}
+
+#container{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+#navigation{
+  padding-bottom:30px;
+}
+
+#navigation-title{
+  font-weight:700;
+  font-size:24px;
+  color:#000;
+}
+
+#navigation-subtitle{
+  font-weight:500;
+  font-size:16px;
+  color:#808080;
+}
+
+#navigation-links{
+  text-align:right;
+}
+
+#navigation-links ul{
+  margin:0;
+}
+
+#navigation-links li{
+  display:inline;
+  padding-left:15px;
+}
+
+.col-two{
+  width:50%;
+  float:left;
+}
+
+.col-three{
+  width:33.33333%;
+  float:left;
+}
