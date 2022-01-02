@@ -3,6 +3,7 @@
   font-family:'Rubik';
   font-style:normal;
   font-weight:300;
+  font-display:swap;
   src:url('/media/fonts/rubik-v14-latin-300.eot'); /* IE9 Compat Modes */
   src:local(''),
       url('/media/fonts/rubik-v14-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -16,6 +17,7 @@
   font-family: 'Rubik';
   font-style:normal;
   font-weight400;
+  font-display:swap;
   src:url('/media/fonts/rubik-v14-latin-regular.eot'); /* IE9 Compat Modes */
   src:local(''),
       url('/media/fonts/rubik-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -29,6 +31,7 @@
   font-family:'Rubik';
   font-style:normal;
   font-weight:600;
+  font-display:swap;
   src:url('/media/fonts/rubik-v14-latin-600.eot');
   src:local(''),
       url('/media/fonts/rubik-v14-latin-600.eot?#iefix') format('embedded-opentype'),
@@ -42,6 +45,7 @@
   font-family:'Rubik';
   font-style:normal;
   font-weight:700;
+  font-display:swap;
   src:url('/media/fonts/rubik-v14-latin-700.eot');
   src:local(''),
       url('/media/fonts/rubik-v14-latin-700.eot?#iefix') format('embedded-opentype'),
@@ -55,6 +59,7 @@
   font-family:'Rubik';
   font-style:normal;
   font-weight:500;
+  font-display:swap;
   src:url('/media/fonts/rubik-v14-latin-500.eot');
   src:local(''),
       url('/media/fonts/rubik-v14-latin-500.eot?#iefix') format('embedded-opentype'),
