@@ -6,7 +6,7 @@ body{
 }
 
 p{
-  line-height:1.5em;
+  line-height:1.2em;
 }
 
 a{
@@ -25,13 +25,13 @@ a{
 
 #navigation-title{
   font-weight:700;
-  font-size:24px;
+  font-size:20px;
   color:#000;
 }
 
 #navigation-subtitle{
   font-weight:500;
-  font-size:16px;
+  font-size:14px;
   color:#656565;
 }
 
@@ -46,6 +46,15 @@ a{
 #navigation-links li{
   display:inline;
   padding-left:15px;
+}
+
+.headline{
+  font-weight:500;
+  font-size:50px;
+}
+
+.feature{
+  font-size:18px;
 }
 
 .col-two{
