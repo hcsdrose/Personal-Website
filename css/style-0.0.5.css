@@ -157,6 +157,15 @@ hr{
   font-size:24px;
 }
 
+.button{
+  background-color:#000;
+  text-decoration:none;
+  color:#fff;
+  padding:10px 12px 10px 12px;
+  border-radius:5px;
+  font-size:18px;
+}
+
 .col-two{
   width:50%;
   float:left;
