@@ -51,23 +51,23 @@
 
     </div>
 
+    <script>
+
+      //Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
+            .then(function(registration) {
+              console.log('Service worker registration successful with scope: ', registration.scope);
+            })
+            .catch(function(error) {
+              console.log('Service worker registration failed: ', error);
+            });
+        });
+      }
+
+    </script>
+
   </body>
 
 </html>
-
-<script>
-
-  //Service Worker
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
-        .then(function(registration) {
-          console.log('Service worker registration successful with scope: ', registration.scope);
-        })
-        .catch(function(error) {
-          console.log('Service worker registration failed: ', error);
-        });
-    });
-  }
-
-</script>
