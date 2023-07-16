@@ -70,12 +70,15 @@
 }
 
 /* main style */
-body{
+html,body{
   height: 100%;
   margin:0;
   padding:0 30px 0 30px;
   font-family:'Rubik',sans-serif;
   font-size:16px;
+  /* mobile viewport bug fix */
+  height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
 }
 
 p{
