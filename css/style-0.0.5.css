@@ -71,8 +71,9 @@
 
 /* main style */
 body{
+  height: 100%;
   margin:0;
-  padding:30px;
+  padding:0 30px 0 30px;
   font-family:'Rubik',sans-serif;
   font-size:16px;
 }
@@ -94,16 +95,26 @@ hr{
 }
 
 #container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   max-width:1200px;
   margin:0 auto;
 }
 
+#content{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 #navigation{
-  padding-bottom:30px;
+  padding:30px 0 30px 0;
 }
 
 #footer{
-  padding-top:30px;
+  padding:30px 0 30px 0;
 }
 
 #footer ul{
