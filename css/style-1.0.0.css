@@ -97,6 +97,11 @@ hr{
   border-top:1px solid #ccc;
 }
 
+::selection {
+  background-color: #ffff00;
+  color: black;
+}
+
 #container{
   display: flex;
   flex-direction: column;
