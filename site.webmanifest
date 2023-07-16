@@ -63,5 +63,9 @@
     "background_color": "#ffffff",
     "theme_color": "#ffffff",
     "orientation": "portrait-primary",
-    "scope": "/"
+    "scope": "/",
+    "serviceworker": {
+      "src": "/service-worker.js",
+      "scope": "/"
+    }
 }
