@@ -185,6 +185,10 @@ hr{
 /* phones */
 @media only screen and (max-width: 600px) {
 
+  html,body{
+    padding:0 10px 0 10px;
+  }
+
   .headline{
     font-size:35px;
   }
