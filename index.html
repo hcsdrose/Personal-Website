@@ -5,10 +5,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <title>Christopher Rose</title>
     <meta name="description" content="I'm an educator & developer currently serving as SVP of Product at Abre.">
-    <meta name="keywords" content="Christopher, Rose, Portfolio, Chris, Education, Educator, Development, Developer, Cincinnati, Ohio, OH">
+    <meta name="keywords"
+        content="Christopher, Rose, Portfolio, Chris, Education, Educator, Development, Developer, Cincinnati, Ohio, OH">
     <meta name="author" content="Christopher Rose">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -17,58 +18,59 @@
     <link rel="stylesheet" href="/css/style-1.0.0.css">
     <link rel="icon" type="image/png" sizes="48x48" href="/media/icons/icon-48x48.png">
     <link rel="manifest" href="site.webmanifest">
-    <script defer src="/javascript/jquery-3.6.0.min.js"></script>
     <script defer src="/javascript/app-1.0.0.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
 
     <!-- page container -->
     <div id="container">
 
-      <!-- navigation -->
-      <div id="navigation">
-        <div>
-          <div id="navigation-title">Christopher Rose</div>
-          <div id="navigation-subtitle">Educator & Developer</div>
+        <!-- navigation -->
+        <div id="navigation">
+            <div>
+                <div id="navigation-title">Christopher Rose</div>
+                <div id="navigation-subtitle">Educator & Developer</div>
+            </div>
         </div>
-      </div>
 
-      <!-- content -->
-      <div id="content">
-        <p class="headline">Former educator with over 15 years of software development experience.</p>
-        <p class="feature">I am currently serving as SVP of Product at <a href="https://abre.com" rel="noopener" target="_blank">Abre</a>.</p>
-      </div>
+        <!-- content -->
+        <div id="content">
+            <p class="headline">Former educator with over 15 years of software development experience.</p>
+            <p class="feature">I am currently serving as Chief Product Officer at <a href="https://abre.com"
+                    rel="noopener" target="_blank">Abre</a>.</p>
+        </div>
 
-      <!-- footer -->
-      <div id="footer">
-        <hr>
-        <ul>
-          <li><a href="https://github.com/hcsdrose" rel="noopener" target="_blank">GitHub</a></li>
-          <li><a href="https://www.linkedin.com/in/christopherrosein/" rel="noopener" target="_blank">LinkedIn</a></li>
-          <li><a href="https://twitter.com/codedisruptor" rel="noopener" target="_blank">X</a></li>
-        </ul>
-      </div>
+        <!-- footer -->
+        <div id="footer">
+            <hr>
+            <ul>
+                <li><a href="https://github.com/hcsdrose" rel="noopener" target="_blank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/christopherrosein/" rel="noopener" target="_blank">LinkedIn</a>
+                </li>
+                <li><a href="https://twitter.com/codedisruptor" rel="noopener" target="_blank">X</a></li>
+            </ul>
+        </div>
 
     </div>
 
     <script>
 
-      //Service Worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
-            .then(function(registration) {
-              console.log('Service worker registration successful with scope: ', registration.scope);
-            })
-            .catch(function(error) {
-              console.log('Service worker registration failed: ', error);
+        //Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
+                    .then(function (registration) {
+                        console.log('Service worker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(function (error) {
+                        console.log('Service worker registration failed: ', error);
+                    });
             });
-        });
-      }
+        }
 
     </script>
 
-  </body>
+</body>
 
 </html>
