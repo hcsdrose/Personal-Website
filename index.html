@@ -53,7 +53,7 @@
     </div>
 
     <script>
-        // Service Worker
+        //service worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
@@ -66,7 +66,7 @@
             });
         }
 
-        // Page Routing
+        //page routing
         const loadContent = (page) => {
             fetch(`${page}.html`)
                 .then(response => response.text())
@@ -83,30 +83,28 @@
                 });
         };
 
-        // Routing Changes in URL
+        //routing changes in url
         const handleRouteChange = () => {
-            const path = window.location.hash.slice(1); // Get the hash part of the URL (e.g., #about)
+            const path = window.location.hash.slice(1);
             if (path === 'about') {
-                loadContent('aboutpage'); // Load about.html when the path is #about
+                loadContent('aboutpage');
             } else {
-                loadContent('home'); // Load home.html for root or any other path
+                loadContent('home');
             }
         };
 
-        // Event Listeners
+        //event listeners
         document.getElementById('about-link').addEventListener('click', (event) => {
             event.preventDefault(); // Prevent the browser from following the link
             loadContent('aboutpage'); // Load the about.html content dynamically
         });
 
-        // Listen for popstate event to handle browser navigation
+        //listen for popstate event to handle browser navigation
         window.addEventListener('popstate', handleRouteChange);
 
-        // On page load
+        //on page load
         window.addEventListener('load', handleRouteChange);
     </script>
-
-
 
 </body>
 
