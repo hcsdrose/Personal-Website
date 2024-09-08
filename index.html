@@ -72,7 +72,7 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content').innerHTML = data;
-                    if (page === 'aboutpage') {
+                    if (page === 'page-about') {
                         history.pushState({}, '', `/about`);
                     } else {
                         history.pushState({}, '', `/`);
@@ -87,16 +87,16 @@
         const handleRouteChange = () => {
             const path = window.location.hash.slice(1);
             if (path === 'about') {
-                loadContent('aboutpage');
+                loadContent('page-about');
             } else {
-                loadContent('home');
+                loadContent('page-home');
             }
         };
 
         //event listeners
         document.getElementById('about-link').addEventListener('click', (event) => {
             event.preventDefault(); // Prevent the browser from following the link
-            loadContent('aboutpage'); // Load the about.html content dynamically
+            loadContent('page-about'); // Load the about.html content dynamically
         });
 
         //listen for popstate event to handle browser navigation
