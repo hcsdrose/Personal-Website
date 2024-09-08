@@ -31,16 +31,13 @@
             <div>
                 <div id="navigation-title">Christopher Rose</div>
                 <div id="navigation-subtitle">Educator & Executive</div>
+                <a href="/about" id="about-link" style="display: none;">About</a>
+
             </div>
         </div>
 
         <!-- content -->
-        <div id="content">
-            <p class="headline">Experienced Educator Turned Tech Executive with 15+ Years in Software Development</p>
-            <p class="feature">Currently the Chief Product Officer at <a href="https://abre.com" rel="noopener"
-                    target="_blank">Abre</a>, I blend a passion for education with deep expertise in software
-                development, driving innovative solutions that empower K12 schools and enhance learning outcomes.</p>
-        </div>
+        <div id="content"></div>
 
         <!-- footer -->
         <div id="footer">
@@ -69,6 +66,46 @@
                     });
             });
         }
+
+        // Simple client-side routing
+        const loadContent = (page) => {
+            fetch(`${page}.html`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                    if (page === 'about') {
+                        history.pushState({}, '', `/${page}`);
+                    } else {
+                        history.pushState({}, '', `/`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading the page:', error);
+                });
+        };
+
+        // Handle route changes
+        const handleRouteChange = () => {
+            const path = window.location.pathname;
+            if (path === '/about') {
+                loadContent('about');
+            } else {
+                loadContent('home'); // Default to home page or other routes if necessary
+            }
+        };
+
+        // Add event listener to handle click on the About link
+        document.getElementById('about-link').addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the browser from following the link
+            loadContent('about'); // Load the about.html content dynamically
+        });
+
+        // Listen for popstate event to handle browser navigation
+        window.addEventListener('popstate', handleRouteChange);
+
+        // On page load
+        window.addEventListener('load', handleRouteChange);
+    </script>
 
     </script>
 
