@@ -67,7 +67,7 @@
             });
         }
 
-        // Simple client-side routing
+        //Page Routing
         const loadContent = (page) => {
             fetch(`${page}.html`)
                 .then(response => response.text())
@@ -84,26 +84,26 @@
                 });
         };
 
-        // Handle route changes
+        //Routing Changes in URL
         const handleRouteChange = () => {
             const path = window.location.pathname;
             if (path === '/about') {
-                loadContent('about');
+                loadContent('aboutpage');
             } else {
-                loadContent('home'); // Default to home page or other routes if necessary
+                loadContent('home');
             }
         };
 
-        // Add event listener to handle click on the About link
+        //Event Listeners
         document.getElementById('about-link').addEventListener('click', (event) => {
             event.preventDefault(); // Prevent the browser from following the link
-            loadContent('about'); // Load the about.html content dynamically
+            loadContent('aboutpage'); // Load the about.html content dynamically
         });
 
-        // Listen for popstate event to handle browser navigation
+        //Listen for popstate event to handle browser navigation
         window.addEventListener('popstate', handleRouteChange);
 
-        // On page load
+        //On page load
         window.addEventListener('load', handleRouteChange);
     </script>
 
