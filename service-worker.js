@@ -1,5 +1,5 @@
 // Service Worker version
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2.0.0';
 
 // Cache name
 const CACHE_NAME = `Christopher-Rose-${CACHE_VERSION}`;
