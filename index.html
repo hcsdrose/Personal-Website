@@ -32,7 +32,7 @@
                 <div id="navigation-title">Christopher Rose</div>
                 <div id="navigation-subtitle">Educator & Executive</div>
                 <a href="/about" id="about-link" style="display: none;">About</a>
-
+                <a href="/reflections" id="reflections-link" style="display: none;">Reflections</a>
             </div>
         </div>
 
@@ -74,6 +74,8 @@
                     document.getElementById('content').innerHTML = data;
                     if (page === 'page-about') {
                         history.pushState({}, '', `/about`);
+                    } else if (page === 'page-reflections') {
+                        history.pushState({}, '', `/reflections`);
                     } else {
                         history.pushState({}, '', `/`);
                     }
@@ -88,6 +90,8 @@
             const path = window.location.hash.slice(1);
             if (path === 'about') {
                 loadContent('page-about');
+            } else if (path === 'reflections') {
+                loadContent('page-reflections');
             } else {
                 loadContent('page-home');
             }
@@ -97,6 +101,10 @@
         document.getElementById('about-link').addEventListener('click', (event) => {
             event.preventDefault(); // Prevent the browser from following the link
             loadContent('page-about'); // Load the about.html content dynamically
+        });
+        document.getElementById('reflections-link').addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the browser from following the link
+            loadContent('page-reflections'); // Load the reflections.html content dynamically
         });
 
         //listen for popstate event to handle browser navigation
