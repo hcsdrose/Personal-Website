@@ -8,8 +8,8 @@ const CACHE_NAME = `Christopher-Rose-${CACHE_VERSION}`;
 const FILES_TO_CACHE = [
     '/',
     '/index.html',
-    '/home.html',
-    '/aboutpage.html',
+    '/page-home.html',
+    '/page-about.html',
     '/css/style-1.0.0.css',
     '/media/icons/profile-icon-48.png'
 ];
