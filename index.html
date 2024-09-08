@@ -53,8 +53,7 @@
     </div>
 
     <script>
-
-        //Service Worker
+        // Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
@@ -67,14 +66,15 @@
             });
         }
 
-        //Page Routing
+        // Page Routing
         const loadContent = (page) => {
-            fetch(`${page}.html`)
+            const baseUrl = window.location.origin; // This gives you the base URL (https://christopherrose.com)
+            fetch(`${baseUrl}/${page}.html`)
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content').innerHTML = data;
-                    if (page === 'about') {
-                        history.pushState({}, '', `/${page}`);
+                    if (page === 'aboutpage') {
+                        history.pushState({}, '', `/about`);
                     } else {
                         history.pushState({}, '', `/`);
                     }
@@ -84,29 +84,27 @@
                 });
         };
 
-        //Routing Changes in URL
+        // Routing Changes in URL
         const handleRouteChange = () => {
             const path = window.location.pathname;
             if (path === '/about') {
-                loadContent('aboutpage');
+                loadContent('aboutpage'); // Load about.html when the path is /about
             } else {
-                loadContent('home');
+                loadContent('home'); // Load home.html when at root
             }
         };
 
-        //Event Listeners
+        // Event Listeners
         document.getElementById('about-link').addEventListener('click', (event) => {
             event.preventDefault(); // Prevent the browser from following the link
             loadContent('aboutpage'); // Load the about.html content dynamically
         });
 
-        //Listen for popstate event to handle browser navigation
+        // Listen for popstate event to handle browser navigation
         window.addEventListener('popstate', handleRouteChange);
 
-        //On page load
+        // On page load
         window.addEventListener('load', handleRouteChange);
-    </script>
-
     </script>
 
 </body>
