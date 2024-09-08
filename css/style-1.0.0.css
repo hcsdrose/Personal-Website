@@ -83,18 +83,14 @@ body {
     padding: 0 30px 0 30px;
     font-family: 'Rubik', sans-serif;
     font-size: 18px;
-    /* Increased base font size for better readability */
     line-height: 1.6em;
-    /* Improved line height for accessibility */
     height: -webkit-fill-available;
     min-height: -webkit-fill-available;
 }
 
 p {
     line-height: 1.7em;
-    /* Improved for better reading experience */
     font-size: 18px;
-    /* Accessible font size for paragraphs */
 }
 
 a {
@@ -130,14 +126,12 @@ hr {
 #navigation-title {
     font-weight: 500;
     font-size: 26px;
-    /* Slightly larger for better visibility */
     color: #000;
     letter-spacing: -1px;
 }
 
 #navigation-subtitle {
     font-size: 20px;
-    /* Increased subtitle font size */
     color: #656565;
 }
 
@@ -186,7 +180,6 @@ hr {
     line-height: 1.2em;
     font-weight: 700;
     font-size: 50px;
-    /* Slightly reduced to ensure legibility */
     letter-spacing: -1px;
 }
 
@@ -208,7 +201,6 @@ hr {
 
     .feature {
         font-size: 18px;
-        /* Increased for mobile accessibility */
     }
 
 }

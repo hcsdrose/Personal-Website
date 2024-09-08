@@ -9,7 +9,7 @@ const FILES_TO_CACHE = [
     '/',
     '/index.html',
     '/css/style-1.0.0.css',
-    '/media/icons/icon-48x48.png'
+    '/media/icons/profile-icon-48.png'
 ];
 
 // Install event
