@@ -3,11 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=/" />
-    <title>Page Not Found</title>
-    <script type="text/javascript">
-        // Redirect to the index.html page and let the JavaScript router handle the URL
-        window.location.href = "/";
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Found</title>
+    <script>
+        // Check the pathname of the current URL
+        const path = window.location.pathname;
+        if (path === "/about") {
+            // Load aboutpage content
+            window.location.replace("/#about");
+        } else {
+            // Redirect to the homepage
+            window.location.replace("/");
+        }
     </script>
 </head>
 

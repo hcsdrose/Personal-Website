@@ -68,8 +68,7 @@
 
         // Page Routing
         const loadContent = (page) => {
-            const baseUrl = window.location.origin; // This gives you the base URL (https://christopherrose.com)
-            fetch(`${baseUrl}/${page}.html`)
+            fetch(`${page}.html`)
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content').innerHTML = data;
@@ -86,11 +85,11 @@
 
         // Routing Changes in URL
         const handleRouteChange = () => {
-            const path = window.location.pathname;
-            if (path === '/about') {
-                loadContent('aboutpage'); // Load about.html when the path is /about
+            const path = window.location.hash.slice(1); // Get the hash part of the URL (e.g., #about)
+            if (path === 'about') {
+                loadContent('aboutpage'); // Load about.html when the path is #about
             } else {
-                loadContent('home'); // Load home.html when at root
+                loadContent('home'); // Load home.html for root or any other path
             }
         };
 
@@ -106,6 +105,8 @@
         // On page load
         window.addEventListener('load', handleRouteChange);
     </script>
+
+
 
 </body>
 
