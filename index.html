@@ -102,7 +102,6 @@
                         document.body.appendChild(newScript);
                         document.body.removeChild(newScript);
                     });
-
                 })
                 .catch(error => {
                     console.error('Error loading the page:', error);
@@ -111,7 +110,7 @@
 
         // Update the URL and push state without reloading the page
         const updatePage = (page, slug = '') => {
-            let state = { page };
+            let state = { page, slug };
 
             if (page === '/pages/about') {
                 history.pushState(state, '', `/about`);
@@ -120,14 +119,11 @@
                 history.pushState(state, '', `/reflections`);
                 document.title = "Christopher Rose - Reflections";
             } else if (page.includes('/pages/post')) {
-                history.pushState({ page, slug }, '', `/reflections/post/${slug}`);
+                history.pushState(state, '', `/reflections/post/${slug}`);
                 document.title = "Christopher Rose - Post";
             } else if (page === '/pages/home') {
                 history.pushState(state, '', `/`);
                 document.title = "Christopher Rose - Home";
-            } else {
-                history.pushState(state, '', `/`);
-                document.title = "Christopher Rose";
             }
         };
 
@@ -145,17 +141,21 @@
 
         // Routing changes based on the URL hash
         const handleRouteChange = () => {
-            const path = window.location.hash.slice(1);
-            if (path === 'about') {
+            const path = window.location.pathname;
+
+            if (path === '/about') {
                 loadContent('/pages/about', '');
-            } else if (path === 'reflections') {
+            } else if (path === '/reflections') {
                 loadContent(`/pages/reflections`, '');
-            } else if (path.includes('reflections/post')) {
-                const slug = path.split('reflections/post/')[1];
+            } else if (path.includes('/reflections/post')) {
+                const slug = path.split('/reflections/post/')[1];
                 const page = `/pages/post`;
                 loadContent(page, slug);
-            } else {
+            } else if (path === '/' || path === '') {
+                // Handle direct navigation to the root and default to home page
                 loadContent('/pages/home', '');
+            } else {
+                loadContent('/pages/home', ''); // Default case if nothing matches
             }
         };
 
@@ -176,13 +176,17 @@
         // Listen for popstate event to handle browser navigation
         window.addEventListener('popstate', handlePopState);
 
-        // Listen for forward/back browser buttons on route change
-        window.addEventListener('hashchange', handleRouteChange);
+        // On page load, handle the initial route
+        window.addEventListener('load', () => {
+            const path = window.location.pathname;
 
-        // On page load
-        window.addEventListener('load', handleRouteChange);
-
-
+            if (path === '/' || path === '') {
+                // Ensure homepage is loaded when visiting root URL directly
+                loadContent('/pages/home', '');
+            } else {
+                handleRouteChange();  // Handle other routes on page load
+            }
+        });
 
     </script>
 
