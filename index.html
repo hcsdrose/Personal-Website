@@ -122,12 +122,12 @@
             const path = window.location.hash.slice(1);
             if (path === 'about') {
                 loadContent('/pages/about', '');
+            } else if (path === 'reflections') {
+                loadContent(`/pages/reflections`, '');
             } else if (path.startsWith('reflections/post')) {
                 const slug = path.split('reflections/post/')[1];
                 const page = `/pages/post/${slug}`;
                 loadContent(page, '');
-            } else if (path.startsWith('reflections/')) {
-                loadContent(`/pages/reflections`, '');
             } else {
                 loadContent('/pages/home', '');
             }
