@@ -83,13 +83,13 @@
 
                     // Update the browser's URL without reloading the page
                     if (page === '/pages/about') {
-                        history.pushState({}, '', `/about`);
+                        history.pushState({}, '', `${window.location.protocol}//${window.location.host}/about`);
                         document.title = "Christopher Rose - About"
                     } else if (page === '/pages/reflections') {
-                        history.pushState({}, '', `/reflections`);
+                        history.pushState({}, '', `${window.location.protocol}//${window.location.host}/reflections`);
                         document.title = "Christopher Rose - Reflections";
                     } else if (page.includes('/pages/post')) {
-                        history.pushState({}, '', `/reflections/post/${slug}`);
+                        history.pushState({}, '', `${window.location.protocol}//${window.location.host}/reflections/post/${slug}`);
                         document.title = "Christopher Rose - Post";
                     } else {
                         history.pushState({}, '', `/`);
