@@ -71,7 +71,7 @@
 
         //page routing
         const loadContent = (page, slug) => {
-            fetch(`${page}.html${slug ? `?slug=${slug}` : ''}`)
+            fetch(`${page}.html`)
                 .then(response => response.text())
                 .then(data => {
                     // Create a temporary container to hold the HTML content
@@ -86,7 +86,7 @@
                         history.pushState({}, '', `/about`);
                     } else if (page === '/pages/reflections') {
                         history.pushState({}, '', `/reflections`);
-                    } else if (page === '/pages/post') {
+                    } else if (page.includes('/pages/post')) {
                         history.pushState({}, '', `/reflections/post/${slug}`);
                     } else {
                         history.pushState({}, '', `/`);
@@ -124,10 +124,10 @@
                 loadContent('/pages/about', '');
             } else if (path === 'reflections') {
                 loadContent(`/pages/reflections`, '');
-            } else if (path.startsWith('reflections/post')) {
+            } else if (path.includes('reflections/post')) {
                 const slug = path.split('reflections/post/')[1];
-                const page = `/pages/post/${slug}`;
-                loadContent(page, '');
+                const page = `/pages/post`;
+                loadContent(page, slug);
             } else {
                 loadContent('/pages/home', '');
             }
