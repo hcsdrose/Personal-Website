@@ -69,8 +69,8 @@
             });
         }
 
-        //page routing
-        const loadContent = (page, slug) => {
+        // Page routing
+        const loadContent = (page, slug = '') => {
             fetch(`${page}.html`)
                 .then(response => response.text())
                 .then(data => {
@@ -81,20 +81,8 @@
                     // Insert the HTML content into the target element
                     document.getElementById('content').innerHTML = tempDiv.innerHTML;
 
-                    // Update the browser's URL without reloading the page
-                    if (page === '/pages/about') {
-                        history.pushState({}, '', `${window.location.protocol}//${window.location.host}/about`);
-                        document.title = "Christopher Rose - About"
-                    } else if (page === '/pages/reflections') {
-                        history.pushState({}, '', `${window.location.protocol}//${window.location.host}/reflections`);
-                        document.title = "Christopher Rose - Reflections";
-                    } else if (page.includes('/pages/post')) {
-                        history.pushState({}, '', `${window.location.protocol}//${window.location.host}/reflections/post/${slug}`);
-                        document.title = "Christopher Rose - Post";
-                    } else {
-                        history.pushState({}, '', `/`);
-                        document.title = "Christopher Rose";
-                    }
+                    // Update the browser's URL without reloading the page and manage state
+                    updatePage(page, slug);
 
                     // Extract and run any <script> tags from the loaded content
                     const scripts = tempDiv.querySelectorAll('script');
@@ -121,7 +109,38 @@
                 });
         };
 
-        //routing changes in url
+        // Update the URL and push state without reloading the page
+        const updatePage = (page, slug = '') => {
+            let state = { page };
+
+            if (page === '/pages/about') {
+                history.pushState(state, '', `/about`);
+                document.title = "Christopher Rose - About";
+            } else if (page === '/pages/reflections') {
+                history.pushState(state, '', `/reflections`);
+                document.title = "Christopher Rose - Reflections";
+            } else if (page.includes('/pages/post')) {
+                history.pushState({ page, slug }, '', `/reflections/post/${slug}`);
+                document.title = "Christopher Rose - Post";
+            } else {
+                history.pushState(state, '', `/`);
+                document.title = "Christopher Rose";
+            }
+        };
+
+        // Handle browser navigation (back/forward)
+        const handlePopState = (event) => {
+            if (event.state && event.state.page) {
+                const page = event.state.page;
+                const slug = event.state.slug || '';
+                loadContent(page, slug);
+            } else {
+                // Default to home page if no state is available
+                loadContent('/pages/home', '');
+            }
+        };
+
+        // Routing changes based on the URL hash
         const handleRouteChange = () => {
             const path = window.location.hash.slice(1);
             if (path === 'about') {
@@ -137,7 +156,7 @@
             }
         };
 
-        //event listeners
+        // Event listeners
         document.getElementById('navigation-logo').addEventListener('click', (event) => {
             event.preventDefault();
             loadContent('/pages/home', '');
@@ -151,14 +170,15 @@
             loadContent('/pages/reflections', '');
         });
 
-        //listen for popstate event to handle browser navigation
-        window.addEventListener('popstate', handleRouteChange);
+        // Listen for popstate event to handle browser navigation
+        window.addEventListener('popstate', handlePopState);
 
-        //listen for forward/back browser buttons on route change
+        // Listen for forward/back browser buttons on route change
         window.addEventListener('hashchange', handleRouteChange);
 
-        //on page load
+        // On page load
         window.addEventListener('load', handleRouteChange);
+
 
     </script>
 
