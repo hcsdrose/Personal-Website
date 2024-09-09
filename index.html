@@ -72,9 +72,9 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content').innerHTML = data;
-                    if (page === 'page-about') {
+                    if (page === '/pages/about') {
                         history.pushState({}, '', `/about`);
-                    } else if (page === 'page-reflections') {
+                    } else if (page === '/pages/reflections') {
                         history.pushState({}, '', `/reflections`);
                     } else {
                         history.pushState({}, '', `/`);
