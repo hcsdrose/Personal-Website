@@ -28,11 +28,14 @@
 
         <!-- navigation -->
         <div id="navigation">
-            <div>
+            <div id="navigation-logo">
                 <div id="navigation-title">Christopher Rose</div>
                 <div id="navigation-subtitle">Educator & Executive</div>
+            </div>
+            <div id="links">
                 <a href="/about" id="about-link" style="display: none;">About</a>
                 <a href="/reflections" id="reflections-link" style="display: none;">Reflections</a>
+                <a href="/reflection" class="reflection" style="display: none;">Reflection</a>
             </div>
         </div>
 
@@ -67,18 +70,47 @@
         }
 
         //page routing
-        const loadContent = (page) => {
-            fetch(`${page}.html`)
+        const loadContent = (page, slug) => {
+            fetch(`${page}.html${slug ? `?slug=${slug}` : ''}`)
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('content').innerHTML = data;
+                    // Create a temporary container to hold the HTML content
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data;
+
+                    // Insert the HTML content into the target element
+                    document.getElementById('content').innerHTML = tempDiv.innerHTML;
+
+                    // Update the browser's URL without reloading the page
                     if (page === '/pages/about') {
                         history.pushState({}, '', `/about`);
                     } else if (page === '/pages/reflections') {
                         history.pushState({}, '', `/reflections`);
+                    } else if (page === '/pages/post') {
+                        history.pushState({}, '', `/reflections/post/${slug}`);
                     } else {
                         history.pushState({}, '', `/`);
                     }
+
+                    // Extract and run any <script> tags from the loaded content
+                    const scripts = tempDiv.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+
+                        // If the script has a 'src' attribute (external script)
+                        if (script.src) {
+                            newScript.src = script.src;
+                            newScript.async = true; // Load asynchronously
+                        } else {
+                            // Inline script, copy and execute
+                            newScript.textContent = script.textContent;
+                        }
+
+                        // Append the script to the document to execute it
+                        document.body.appendChild(newScript);
+                        document.body.removeChild(newScript); // Cleanup
+                    });
+
                 })
                 .catch(error => {
                     console.error('Error loading the page:', error);
@@ -89,22 +121,30 @@
         const handleRouteChange = () => {
             const path = window.location.hash.slice(1);
             if (path === 'about') {
-                loadContent('/pages/about');
-            } else if (path === 'reflections') {
-                loadContent('/pages/reflections');
+                loadContent('/pages/about', '');
+            } else if (path.startsWith('reflections/post')) {
+                const slug = path.split('reflections/post/')[1];
+                const page = `/pages/post/${slug}`;
+                loadContent(page, '');
+            } else if (path.startsWith('reflections/')) {
+                loadContent(`/pages/reflections`, '');
             } else {
-                loadContent('/pages/home');
+                loadContent('/pages/home', '');
             }
         };
 
         //event listeners
+        document.getElementById('navigation-logo').addEventListener('click', (event) => {
+            event.preventDefault();
+            loadContent('/pages/home', '');
+        });
         document.getElementById('about-link').addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent the browser from following the link
-            loadContent('/pages/about'); // Load the about.html content dynamically
+            event.preventDefault();
+            loadContent('/pages/about', '');
         });
         document.getElementById('reflections-link').addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent the browser from following the link
-            loadContent('/pages/reflections'); // Load the reflections.html content dynamically
+            event.preventDefault();
+            loadContent('/pages/reflections', '');
         });
 
         //listen for popstate event to handle browser navigation
@@ -112,6 +152,7 @@
 
         //on page load
         window.addEventListener('load', handleRouteChange);
+
     </script>
 
 </body>

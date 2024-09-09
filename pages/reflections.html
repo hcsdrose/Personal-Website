@@ -1,1 +1,28 @@
-<p class="headline">Coming Soon</p>
+<p class="reflections"></p>
+<script>
+    fetch('/pages/reflections.json', { cache: 'no-store' })
+        .then(response => response.json())
+        .then(data => {
+            const reflectionsDiv = document.querySelector('.reflections');
+            data.forEach(reflection => {
+                const reflectionElement = document.createElement('div');
+                reflectionElement.innerHTML = `
+                    <h2><a class="reflection" data-slug="${reflection.slug}" href="/reflections/post">${reflection.title}</a></h2>
+                    <p>${reflection.date}</p>
+                    <p>${reflection.body}</p>
+                `;
+                reflectionsDiv.appendChild(reflectionElement);
+            });
+
+            reflectionsDiv.addEventListener('click', (event) => {
+                if (event.target.classList.contains('reflection')) {
+                    event.preventDefault();
+                    const slug = event.target.dataset.slug;
+                    loadContent(`/pages/post`, slug);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+</script>

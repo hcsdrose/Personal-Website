@@ -11,6 +11,10 @@
         if (path === "/about") {
             //load about
             window.location.replace("/#about");
+        } else if (path.includes("/reflections/post")) {
+            //load reflections post
+            const slug = path.substring(path.indexOf("/reflections/post/") + "/reflections/post/".length);
+            window.location.replace("/#reflections/post/" + slug);
         } else if (path === "/reflections") {
             //load reflections
             window.location.replace("/#reflections");

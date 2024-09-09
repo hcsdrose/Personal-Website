@@ -1,0 +1,6 @@
+<p class="headline">Post2</p>
+<script>
+    var currentUrl = window.location.href;
+    var slug = currentUrl.substring(currentUrl.indexOf("/reflections/post/") + "/reflections/post/".length);
+    document.querySelector('.headline').innerText = slug;
+</script>

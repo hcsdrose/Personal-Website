@@ -1,0 +1,23 @@
+[
+    {
+        "title": "The Art of Programming",
+        "slug": "the-art-of-programming",
+        "date": "2024-09-08",
+        "image": "https://example.com/first-image.jpg",
+        "body": "Programming is a creative and logical process that allows us to build amazing software solutions. In this post, we will explore the fundamental principles of programming and delve into various programming paradigms. We will also discuss best practices, tips, and tricks to help you become a better programmer. So, grab your favorite coding language and let's embark on this exciting journey together!"
+    },
+    {
+        "title": "Mastering Data Structures and Algorithms",
+        "slug": "mastering-data-structures-and-algorithms",
+        "date": "2024-09-07",
+        "image": "https://example.com/second-image.jpg",
+        "body": "Data structures and algorithms are the building blocks of efficient and scalable software. In this post, we will dive deep into various data structures such as arrays, linked lists, stacks, queues, trees, and graphs. We will also explore different algorithmic techniques like sorting, searching, and dynamic programming. By the end of this post, you will have a solid understanding of how to design and implement optimized solutions to complex problems."
+    },
+    {
+        "title": "Web Development: From Frontend to Backend",
+        "slug": "web-development-from-frontend-to-backend",
+        "date": "2024-09-06",
+        "image": "https://example.com/third-image.jpg",
+        "body": "Web development is an ever-evolving field that encompasses both frontend and backend technologies. In this post, we will cover the essentials of HTML, CSS, and JavaScript for building beautiful and interactive user interfaces. We will also explore server-side programming using popular frameworks like Node.js and Django. Whether you're a beginner or an experienced developer, this post will provide valuable insights and resources to enhance your web development skills."
+    }
+]

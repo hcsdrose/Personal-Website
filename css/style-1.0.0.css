@@ -135,6 +135,10 @@ hr {
     color: #656565;
 }
 
+#navigation-logo {
+    cursor: pointer;
+}
+
 #navigation-links {
     text-align: right;
 }
