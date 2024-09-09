@@ -89,22 +89,22 @@
         const handleRouteChange = () => {
             const path = window.location.hash.slice(1);
             if (path === 'about') {
-                loadContent('page-about');
+                loadContent('/pages/about');
             } else if (path === 'reflections') {
-                loadContent('page-reflections');
+                loadContent('/pages/reflections');
             } else {
-                loadContent('page-home');
+                loadContent('/pages/home');
             }
         };
 
         //event listeners
         document.getElementById('about-link').addEventListener('click', (event) => {
             event.preventDefault(); // Prevent the browser from following the link
-            loadContent('page-about'); // Load the about.html content dynamically
+            loadContent('/pages/about'); // Load the about.html content dynamically
         });
         document.getElementById('reflections-link').addEventListener('click', (event) => {
             event.preventDefault(); // Prevent the browser from following the link
-            loadContent('page-reflections'); // Load the reflections.html content dynamically
+            loadContent('/pages/reflections'); // Load the reflections.html content dynamically
         });
 
         //listen for popstate event to handle browser navigation
