@@ -81,7 +81,7 @@
                     // Insert the HTML content into the target element
                     document.getElementById('content').innerHTML = tempDiv.innerHTML;
 
-                    // Update the browser's URL without reloading the page and manage state
+                    // Update the browser's URL and manage history state
                     updatePage(page, slug);
 
                     // Extract and run any <script> tags from the loaded content
@@ -112,6 +112,7 @@
         const updatePage = (page, slug = '') => {
             let state = { page, slug };
 
+            // Determine correct URL path and title based on page and slug
             if (page === '/pages/about') {
                 history.pushState(state, '', `/about`);
                 document.title = "Christopher Rose - About";
@@ -122,6 +123,7 @@
                 history.pushState(state, '', `/reflections/post/${slug}`);
                 document.title = "Christopher Rose - Post";
             } else if (page === '/pages/home') {
+                // Ensure homepage is properly tracked in history
                 history.pushState(state, '', `/`);
                 document.title = "Christopher Rose - Home";
             }
@@ -134,7 +136,7 @@
                 const slug = event.state.slug || '';
                 loadContent(page, slug);
             } else {
-                // If no state, default to home page (this should happen for the initial page load)
+                // If no state exists, default to the homepage
                 loadContent('/pages/home', '');
             }
         };
@@ -159,7 +161,7 @@
             }
         };
 
-        // Event listeners
+        // Event listeners for navigation
         document.getElementById('navigation-logo').addEventListener('click', (event) => {
             event.preventDefault();
             loadContent('/pages/home', '');
