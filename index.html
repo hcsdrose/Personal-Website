@@ -122,6 +122,9 @@
             } else if (page.includes('/pages/post')) {
                 history.pushState({ page, slug }, '', `/reflections/post/${slug}`);
                 document.title = "Christopher Rose - Post";
+            } else if (page === '/pages/home') {
+                history.pushState(state, '', `/`);
+                document.title = "Christopher Rose - Home";
             } else {
                 history.pushState(state, '', `/`);
                 document.title = "Christopher Rose";
@@ -178,6 +181,7 @@
 
         // On page load
         window.addEventListener('load', handleRouteChange);
+
 
 
     </script>
