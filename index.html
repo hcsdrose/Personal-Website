@@ -34,7 +34,7 @@
             </div>
             <div id="links">
                 <a href="/about" id="about-link" style="display: none;">About</a>
-                <a href="/reflections" id="reflections-link" style="display: none;">Reflections</a>
+                <a href="/reflections" id="reflections-link">Reflections</a>
                 <a href="/reflection" class="reflection" style="display: none;">Reflection</a>
             </div>
         </div>
@@ -84,12 +84,16 @@
                     // Update the browser's URL without reloading the page
                     if (page === '/pages/about') {
                         history.pushState({}, '', `/about`);
+                        document.title = "Christopher Rose - About"
                     } else if (page === '/pages/reflections') {
                         history.pushState({}, '', `/reflections`);
+                        document.title = "Christopher Rose - Reflections";
                     } else if (page.includes('/pages/post')) {
                         history.pushState({}, '', `/reflections/post/${slug}`);
+                        document.title = "Christopher Rose - Post";
                     } else {
                         history.pushState({}, '', `/`);
+                        document.title = "Christopher Rose";
                     }
 
                     // Extract and run any <script> tags from the loaded content
@@ -100,7 +104,7 @@
                         // If the script has a 'src' attribute (external script)
                         if (script.src) {
                             newScript.src = script.src;
-                            newScript.async = true; // Load asynchronously
+                            newScript.async = true;
                         } else {
                             // Inline script, copy and execute
                             newScript.textContent = script.textContent;
@@ -108,7 +112,7 @@
 
                         // Append the script to the document to execute it
                         document.body.appendChild(newScript);
-                        document.body.removeChild(newScript); // Cleanup
+                        document.body.removeChild(newScript);
                     });
 
                 })
