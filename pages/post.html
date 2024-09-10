@@ -1,6 +1,17 @@
-<p class="headline">Post2</p>
+<p class="post_title"></p>
+<p class="post_body"></p>
 <script>
     var currentUrl = window.location.href;
     var slug = currentUrl.substring(currentUrl.indexOf("/reflections/post/") + "/reflections/post/".length);
-    document.querySelector('.headline').innerText = slug;
+
+    fetch('/pages/reflections.json')
+        .then(response => response.json())
+        .then(data => {
+            const post = data.find(item => item.slug === slug);
+            document.querySelector('.post_title').innerText = post.title;
+            document.querySelector('.post_body').innerText = post.body;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 </script>

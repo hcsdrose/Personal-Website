@@ -7,18 +7,21 @@
             data.forEach(reflection => {
                 const reflectionElement = document.createElement('div');
                 reflectionElement.innerHTML = `
-                    <h2><a class="reflection" data-slug="${reflection.slug}" href="/reflections/post">${reflection.title}</a></h2>
-                    <p>${reflection.date}</p>
-                    <p>${reflection.body}</p>
-                `;
+                <div style='cursor: pointer;' class="reflection-link" data-slug="${reflection.slug}">
+                <p class="post_title">${reflection.title}</p>
+                <p class="post_body">${reflection.date}</p>
+                <p class="post_body">${reflection.short}</p>
+                <div>
+            `;
                 reflectionsDiv.appendChild(reflectionElement);
             });
 
             reflectionsDiv.addEventListener('click', (event) => {
-                if (event.target.classList.contains('reflection')) {
+                const clickedDiv = event.target.closest('.reflection-link');
+                if (clickedDiv) {
                     event.preventDefault();
-                    const slug = event.target.dataset.slug;
-                    loadContent(`/pages/post`, slug);
+                    const slug = clickedDiv.dataset.slug;
+                    loadContent('/pages/post', slug);
                 }
             });
         })
