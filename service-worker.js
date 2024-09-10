@@ -1,17 +1,11 @@
 // Service Worker version
-const CACHE_VERSION = 'v2.0.0';
+const CACHE_VERSION = 'v2.0.1';
 
 // Cache name
 const CACHE_NAME = `Christopher-Rose-${CACHE_VERSION}`;
 
 // Files to cache
 const FILES_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/pages/home.html',
-    '/pages/about.html',
-    '/pages/reflections.html',
-    '/css/style-1.0.0.css',
     '/media/icons/profile-icon-48.png'
 ];
 
