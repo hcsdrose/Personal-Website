@@ -139,17 +139,27 @@ hr {
     cursor: pointer;
 }
 
-#navigation-links {
-    text-align: right;
-}
-
 #navigation-links ul {
+    list-style-type: none;
     margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: start;
 }
 
 #navigation-links li {
-    display: inline;
-    padding-left: 15px;
+    margin-right: 20px;
+}
+
+#navigation-links a {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px;
+}
+
+#navigation-links a:hover {
+    color: #000;
 }
 
 /* footer */
@@ -217,6 +227,14 @@ hr {
 
     .feature {
         font-size: 18px;
+    }
+
+    .post_title {
+        font-size: 28px;
+    }
+
+    .post_body {
+        font-size: 16px;
     }
 
 }

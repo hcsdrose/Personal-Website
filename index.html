@@ -32,10 +32,13 @@
                 <div id="navigation-title">Christopher Rose</div>
                 <div id="navigation-subtitle">Educator & Executive</div>
             </div>
-            <div id="links">
-                <a href="/about" id="about-link" style="display: none;">About</a>
-                <a href="/reflections" id="reflections-link" style="display: none;">Reflections</a>
-                <a href="/reflection" class="reflection" style="display: none;">Reflection</a>
+            <hr>
+            <div id="navigation-links">
+                <ul>
+                    <li><a href="/" id="home-link">Home</a></li>
+                    <li><a href="/about" id="about-link">About</a></li>
+                    <li><a href="/reflections" id="reflections-link" style="display: none;">Reflections</a></li>
+                </ul>
             </div>
         </div>
 
@@ -57,7 +60,6 @@
 
     <script>
         //service worker
-        /*
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
@@ -69,7 +71,6 @@
                     });
             });
         }
-            */
 
         // Page routing
         const loadContent = (page, slug = '') => {
@@ -160,6 +161,10 @@
 
         // Event listeners
         document.getElementById('navigation-logo').addEventListener('click', (event) => {
+            event.preventDefault();
+            loadContent('/pages/home', '');
+        });
+        document.getElementById('home-link').addEventListener('click', (event) => {
             event.preventDefault();
             loadContent('/pages/home', '');
         });
