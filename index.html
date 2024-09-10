@@ -33,7 +33,7 @@
                 <div id="navigation-subtitle">Educator & Executive</div>
             </div>
             <div id="links">
-                <a href="/about" id="about-link" style="color: #fff;">About</a>
+                <a href="/about" id="about-link" style="display: none;">About</a>
                 <a href="/reflections" id="reflections-link" style="display: none;">Reflections</a>
                 <a href="/reflection" class="reflection" style="display: none;">Reflection</a>
             </div>
@@ -81,7 +81,7 @@
                     // Insert the HTML content into the target element
                     document.getElementById('content').innerHTML = tempDiv.innerHTML;
 
-                    // Update the browser's URL and manage history state
+                    // Update the browser's URL without reloading the page and manage state
                     updatePage(page, slug);
 
                     // Extract and run any <script> tags from the loaded content
@@ -102,6 +102,7 @@
                         document.body.appendChild(newScript);
                         document.body.removeChild(newScript);
                     });
+
                 })
                 .catch(error => {
                     console.error('Error loading the page:', error);
@@ -110,9 +111,8 @@
 
         // Update the URL and push state without reloading the page
         const updatePage = (page, slug = '') => {
-            let state = { page, slug };
+            let state = { page };
 
-            // Determine correct URL path and title based on page and slug
             if (page === '/pages/about') {
                 history.pushState(state, '', `/about`);
                 document.title = "Christopher Rose - About";
@@ -120,12 +120,11 @@
                 history.pushState(state, '', `/reflections`);
                 document.title = "Christopher Rose - Reflections";
             } else if (page.includes('/pages/post')) {
-                history.pushState(state, '', `/reflections/post/${slug}`);
+                history.pushState({ page, slug }, '', `/reflections/post/${slug}`);
                 document.title = "Christopher Rose - Post";
-            } else if (page === '/pages/home') {
-                // Ensure homepage is properly tracked in history
+            } else {
                 history.pushState(state, '', `/`);
-                document.title = "Christopher Rose - Home";
+                document.title = "Christopher Rose";
             }
         };
 
@@ -136,32 +135,28 @@
                 const slug = event.state.slug || '';
                 loadContent(page, slug);
             } else {
-                // If no state exists, default to the homepage
+                // Default to home page if no state is available
                 loadContent('/pages/home', '');
             }
         };
 
-        // Initial load and page changes based on URL
-        const handleInitialRoute = () => {
-            const path = window.location.pathname;
-
-            if (path === '/about') {
+        // Routing changes based on the URL hash
+        const handleRouteChange = () => {
+            const path = window.location.hash.slice(1);
+            if (path === 'about') {
                 loadContent('/pages/about', '');
-            } else if (path === '/reflections') {
+            } else if (path === 'reflections') {
                 loadContent(`/pages/reflections`, '');
-            } else if (path.includes('/reflections/post')) {
-                const slug = path.split('/reflections/post/')[1];
+            } else if (path.includes('reflections/post')) {
+                const slug = path.split('reflections/post/')[1];
                 const page = `/pages/post`;
                 loadContent(page, slug);
-            } else if (path === '/' || path === '') {
-                // Handle direct navigation to the root and load the homepage
-                loadContent('/pages/home', '');
             } else {
-                loadContent('/pages/home', ''); // Default case
+                loadContent('/pages/home', '');
             }
         };
 
-        // Event listeners for navigation
+        // Event listeners
         document.getElementById('navigation-logo').addEventListener('click', (event) => {
             event.preventDefault();
             loadContent('/pages/home', '');
@@ -178,8 +173,12 @@
         // Listen for popstate event to handle browser navigation
         window.addEventListener('popstate', handlePopState);
 
-        // On page load, handle the initial route
-        window.addEventListener('load', handleInitialRoute);
+        // Listen for forward/back browser buttons on route change
+        window.addEventListener('hashchange', handleRouteChange);
+
+        // On page load
+        window.addEventListener('load', handleRouteChange);
+
 
     </script>
 
