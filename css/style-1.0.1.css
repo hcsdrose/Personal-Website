@@ -213,6 +213,39 @@ hr {
     font-size: 20px;
 }
 
+.company-info {
+    display: flex;
+    align-items: center;
+}
+
+.timeline {
+    margin-top: 20px;
+    position: relative;
+    padding-left: 30px;
+    border-left: 1px solid #ccc;
+}
+
+.timeline-item {
+    margin-bottom: 20px;
+    padding-left: 10px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -11px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+.timeline-item h3 {
+    margin: 0;
+}
+
 /* phones */
 @media only screen and (max-width: 600px) {
 
