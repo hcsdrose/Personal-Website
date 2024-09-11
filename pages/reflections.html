@@ -10,8 +10,8 @@
                 reflectionElement.innerHTML = `
                 <div style='cursor: pointer;' class="reflection-link" data-slug="${reflection.slug}">
                 <p class="post_title">${reflection.title}</p>
-                <p class="post_body">${new Date(reflection.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
-                <p class="post_body">${reflection.short}</p>
+                <p>${new Date(reflection.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+                <p>${reflection.short}</p>
                 <div>
             `;
                 reflectionsDiv.appendChild(reflectionElement);

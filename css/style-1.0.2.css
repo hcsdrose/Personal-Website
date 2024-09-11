@@ -88,9 +88,17 @@ body {
     min-height: -webkit-fill-available;
 }
 
+h3 {
+    line-height: 1.2em;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -1px;
+    margin-bottom: 0px;
+}
+
 p {
     line-height: 1.7em;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 a {
@@ -209,10 +217,6 @@ hr {
     margin-bottom: 0px;
 }
 
-.post_body {
-    font-size: 20px;
-}
-
 .company-info {
     display: flex;
     align-items: center;
@@ -266,8 +270,12 @@ hr {
         font-size: 28px;
     }
 
-    .post_body {
+    p {
         font-size: 16px;
+    }
+
+    h3 {
+        font-size: 20px;
     }
 
 }
