@@ -235,6 +235,10 @@ hr {
     position: relative;
 }
 
+.timeline-item p {
+    line-height: .6em !important;
+}
+
 .timeline-item::before {
     content: '';
     position: absolute;
